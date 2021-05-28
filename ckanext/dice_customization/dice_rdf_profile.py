@@ -18,6 +18,11 @@ class DICEDCATProfile(RDFProfile):
      extension - https://github.com/ckan/ckanext-dcat). Methods parse_dataset
      and graph_from_dataset handle deserialization (TTL -> Dataset) and
      serialization (Dataset -> TTL) respectively. Unfinished due to debugging issues.
+     The commented code does not concern our task and is only for reference.
+     For more information, check following links.
+     https://github.com/ckan/ckanext-dcat#rdf-dcat-parser
+     https://github.com/ckan/ckanext-dcat#rdf-dcat-serializer
+     https://github.com/ckan/ckanext-dcat#profiles
 
     '''
 
