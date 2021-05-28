@@ -1,5 +1,3 @@
-[![Tests](https://github.com/dice-group/ckanext-dice-customization/workflows/Tests/badge.svg?branch=main)](https://github.com/dice-group/ckanext-dice-customization/actions)
-
 # ckanext-dice-customization
 
 A Python package that implements customizations over the default CKAN.
@@ -7,19 +5,10 @@ A Python package that implements customizations over the default CKAN.
 
 ## Installation
 
-Go into the Docker console:
+To go into the Docker console:
+
 docker exec -it ckan bash
 
-Steps:
-source $CKAN_VENV/bin/activate && cd $CKAN_VENV/src/
-rm -rf ckanext-dice-customization-master/
-rm dice-customization-master.zip
-wget -O dice-customization-master.zip https://github.com/tohardik/ckanext-dice-customization/archive/refs/heads/master.zip
-unzip dice-customization-master.zip
-cd ckanext-dice-customization-master/
-pip install -r requirements.txt
-python setup.py install
-cd ..
 
 To install ckanext-dice-customization:
 
@@ -30,12 +19,19 @@ To install ckanext-dice-customization:
 2. Remove existing copy, Clone the latest source and install it on the virtualenv
 
     rm -rf ckanext-dice-customization-master/
+    
     rm dice-customization-master.zip
+    
     wget -O dice-customization-master.zip https://github.com/tohardik/ckanext-dice-customization/archive/refs/heads/master.zip
+    
     unzip dice-customization-master.zip
+    
     cd ckanext-dice-customization-master/
+    
     pip install -r requirements.txt
+    
     python setup.py install
+    
     cd ..
 
 3. Add `dice-customization` to the `ckan.plugins` setting in your CKAN
