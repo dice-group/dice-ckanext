@@ -2,62 +2,41 @@
 
 # ckanext-dice-customization
 
-**TODO:** Put a description of your extension here:  What does it do? What features does it have? Consider including some screenshots or embedding a video!
-
-
-## Requirements
-
-**TODO:** For example, you might want to mention here which versions of CKAN this
-extension works with.
-
-If your extension works across different versions you can add the following table:
-
-Compatibility with core CKAN versions:
-
-| CKAN version    | Compatible?   |
-| --------------- | ------------- |
-| 2.6 and earlier | not tested    |
-| 2.7             | not tested    |
-| 2.8             | not tested    |
-| 2.9             | not tested    |
-
-Suggested values:
-
-* "yes"
-* "not tested" - I can't think of a reason why it wouldn't work
-* "not yet" - there is an intention to get it working
-* "no"
+A Python package that implements customizations over the default CKAN.
 
 
 ## Installation
 
+Go into the Docker console:
 docker exec -it ckan bash
 
+Steps:
 source $CKAN_VENV/bin/activate && cd $CKAN_VENV/src/
-rm -rf ckanext-dataset-metadata-master/
-rm master.zip
-wget https://github.com/tohardik/ckanext-dataset-metadata/archive/refs/heads/master.zip
-unzip master.zip
-cd ckanext-dataset-metadata-master/
+rm -rf ckanext-dice-customization-master/
+rm dice-customization-master.zip
+wget -O dice-customization-master.zip https://github.com/tohardik/ckanext-dice-customization/archive/refs/heads/master.zip
+unzip dice-customization-master.zip
+cd ckanext-dice-customization-master/
 pip install -r requirements.txt
 python setup.py install
-
-**TODO:** Add any additional install steps to the list below.
-   For example installing any non-Python dependencies or adding any required
-   config settings.
+cd ..
 
 To install ckanext-dice-customization:
 
 1. Activate your CKAN virtual environment, for example:
 
-     . /usr/lib/ckan/default/bin/activate
+    source $CKAN_VENV/bin/activate && cd $CKAN_VENV/src/
 
-2. Clone the source and install it on the virtualenv
+2. Remove existing copy, Clone the latest source and install it on the virtualenv
 
-    git clone https://github.com/dice-group/ckanext-dice-customization.git
-    cd ckanext-dice-customization
-    pip install -e .
-	pip install -r requirements.txt
+    rm -rf ckanext-dice-customization-master/
+    rm dice-customization-master.zip
+    wget -O dice-customization-master.zip https://github.com/tohardik/ckanext-dice-customization/archive/refs/heads/master.zip
+    unzip dice-customization-master.zip
+    cd ckanext-dice-customization-master/
+    pip install -r requirements.txt
+    python setup.py install
+    cd ..
 
 3. Add `dice-customization` to the `ckan.plugins` setting in your CKAN
    config file (by default the config file is located at
@@ -67,7 +46,7 @@ To install ckanext-dice-customization:
 
      sudo service apache2 reload
 
-
+<!-- 
 ## Config settings
 
 None at present
@@ -128,7 +107,7 @@ If ckanext-dice-customization should be available on PyPI you can follow these s
 
        git tag 0.0.1
        git push --tags
-
+ -->
 ## License
 
 [AGPL](https://www.gnu.org/licenses/agpl-3.0.en.html)
