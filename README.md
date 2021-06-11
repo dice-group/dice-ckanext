@@ -1,48 +1,47 @@
-# ckanext-dice-customization
+# DICE CKANext
 
-A Python package that implements customizations over the default CKAN.
+A Python package that implements customizations over the [DICE CKAN](https://github.com/dice-group/dice-ckan).
 
 
 ## Installation
 
-To go into the Docker console:
+Install the extension:
 
+```shell
 docker exec -it ckan bash
+source $CKAN_VENV/bin/activate && cd $CKAN_VENV/src/
+# To remove a previous version:
+# rm dice-ckanext-master.zip
+# rm -rf dice-ckanext
+wget -O dice-ckanext-master.zip https://github.com/dice-group/dice-ckanext/archive/refs/heads/master.zip
+unzip dice-ckanext-master.zip
+mv dice-ckanext-master/ dice-ckanext/
+cd dice-ckanext/
+python setup.py install
+```
+
+Add the extension to CKAN plugins:
+
+```shell
+docker exec -it ckan nano /etc/ckan/production.ini
+```
+
+Values:
+
+```ini
+ckan.plugins = [...] dice-ckanext
+```
+
+Restart CKAN (e.g.):
+
+```shell
+docker-compose restart ckan
+```
 
 
-To install ckanext-dice-customization:
-
-1. Activate your CKAN virtual environment, for example:
-
-    source $CKAN_VENV/bin/activate && cd $CKAN_VENV/src/
-
-2. Remove existing copy, Clone the latest source and install it on the virtualenv
-
-    rm -rf ckanext-dice-customization-master/
-    
-    rm dice-customization-master.zip
-    
-    wget -O dice-customization-master.zip https://github.com/tohardik/ckanext-dice-customization/archive/refs/heads/master.zip
-    
-    unzip dice-customization-master.zip
-    
-    cd ckanext-dice-customization-master/
-    
-    pip install -r requirements.txt
-    
-    python setup.py install
-    
-    cd ..
-
-3. Add `dice-customization` to the `ckan.plugins` setting in your CKAN
-   config file (by default the config file is located at
-   `/etc/ckan/default/ckan.ini`).
-
-4. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu:
-
-     sudo service apache2 reload
 
 <!-- 
+
 ## Config settings
 
 None at present
@@ -104,6 +103,3 @@ If ckanext-dice-customization should be available on PyPI you can follow these s
        git tag 0.0.1
        git push --tags
  -->
-## License
-
-[AGPL](https://www.gnu.org/licenses/agpl-3.0.en.html)
