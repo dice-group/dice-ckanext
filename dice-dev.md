@@ -29,6 +29,8 @@ http://localhost:5000/api/3/action/status_show
 
 ## Backup extension
 
+The last command can be used to copy a running extension version from docker to git.
+
 `docker volume inspect docker_ckan_home`  
 `ls /var/lib/docker/volumes/docker_ckan_home/_data`  
 `cp -r /var/lib/docker/volumes/docker_ckan_home/_data/venv/src/ckanext-dice/* ~/DICE/git/dice-ckanext/`

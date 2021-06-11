@@ -1,5 +1,11 @@
 {% ckan_extends %}
 
 {% block package_basic_fields_custom %}
-  {{ form.input('publisher_uri', label=_('Publisher URI'), id='field-publisher_uri', placeholder=_('publisher uri'), value=data.publisher_uri, error=errors.publisher_uri, classes=['control-medium']) }}
+    {% if data.get('publisher_uri') is none %}
+        {% set publisher_uri_value = "https://dice-research.org/" %}
+    {% else %}
+        {% set publisher_uri_value = data.get('publisher_uri') %}
+    {% endif %}
+
+  {{ form.input('publisher_uri', label=_('Publisher URI'), id='field-publisher_uri', placeholder=_('publisher uri'), value=publisher_uri_value, error=errors.publisher_uri, classes=['control-medium']) }}
 {% endblock %}
