@@ -31,7 +31,7 @@ http://localhost:5000/api/3/action/status_show
 
 `docker volume inspect docker_ckan_home`  
 `ls /var/lib/docker/volumes/docker_ckan_home/_data`  
-`cp -r /var/lib/docker/volumes/docker_ckan_home/_data/venv/src/ckanext-dice/ ~/DICE/git/dice-ckanext/`
+`cp -r /var/lib/docker/volumes/docker_ckan_home/_data/venv/src/ckanext-dice/* ~/DICE/git/dice-ckanext/`
 
 
 
