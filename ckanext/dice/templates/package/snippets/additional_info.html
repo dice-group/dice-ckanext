@@ -1,0 +1,10 @@
+{% ckan_extends %}
+
+{% block extras %}
+  {% if pkg_dict.publisher_uri %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Publisher URI") }}</th>
+      <td class="dataset-details">{{ pkg_dict.publisher_uri }}</td>
+    </tr>
+  {% endif %}
+{% endblock %}

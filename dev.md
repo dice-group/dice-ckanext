@@ -33,12 +33,25 @@ http://localhost:5000/api/3/action/status_show
 `ls /var/lib/docker/volumes/docker_ckan_home/_data`  
 `cp -r /var/lib/docker/volumes/docker_ckan_home/_data/venv/src/ckanext-dice/* ~/DICE/git/dice-ckanext/`
 
+## Installation test
 
+`docker exec -it ckan bash`  
+`source $CKAN_VENV/bin/activate && cd $CKAN_VENV/src/`  
+`cd ckanext-dice/`  
+`python setup.py develop`
 
-
-## TODO
-
-
-
+## Adding field
 
 https://docs.ckan.org/en/2.9/extensions/adding-custom-fields.html
+
+`sudo chmod -R o+w /var/lib/docker/volumes/docker_ckan_home/_data/venv/src/ckanext-dice/`  
+`pluma /var/lib/docker/volumes/docker_ckan_home/_data/venv/src/ckanext-dice/ckanext/dice/plugin.py`  
+Created 3 templates in ckanext/dice/templates/package/snippets
+
+## Add extension
+
+`docker exec -u 0 -it ckan bash # as root`  
+`apt-get update ; apt-get install nano`
+
+`docker exec -it ckan nano /etc/ckan/production.ini`  
+`ckan.plugins = [...] dice`
