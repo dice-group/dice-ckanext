@@ -7,26 +7,25 @@ class DicePlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
 
     def update_config(self, config_):
         tk.add_template_directory(config_, 'templates')
-        #tk.add_public_directory(config_, 'public')
-        #tk.add_resource('fanstatic',
-        #    'dice')
 
-
-
-    def create_package_schema(self):
-        schema = super(DicePlugin, self).create_package_schema()
+    def _modify_package_schema(self, schema):
         schema.update({
             'publisher_uri': [tk.get_validator('ignore_missing'),
                             tk.get_converter('convert_to_extras')]
         })
+        schema['resources'].update({
+            'size' : [ tk.get_validator('ignore_missing') ]
+        })
+        return schema
+
+    def create_package_schema(self):
+        schema = super(DicePlugin, self).create_package_schema()
+        schema = self._modify_package_schema(schema)
         return schema
 
     def update_package_schema(self):
         schema = super(DicePlugin, self).update_package_schema()
-        schema.update({
-            'publisher_uri': [tk.get_validator('ignore_missing'),
-                            tk.get_converter('convert_to_extras')]
-        })
+        schema = self._modify_package_schema(schema)
         return schema
 
     def show_package_schema(self):
@@ -35,9 +34,10 @@ class DicePlugin(p.SingletonPlugin, tk.DefaultDatasetForm):
             'publisher_uri': [tk.get_converter('convert_from_extras'),
                             tk.get_validator('ignore_missing')]
         })
+        schema['resources'].update({
+            'size' : [ tk.get_validator('ignore_missing') ]
+        })
         return schema
-
-
 
     def is_fallback(self):
         # Return True to register this plugin as the default handler for
