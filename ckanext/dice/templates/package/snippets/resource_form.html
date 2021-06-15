@@ -1,0 +1,7 @@
+{% ckan_extends %}
+
+{% block basic_fields_url %}
+{{ super() }}
+
+  {{ form.input('size', label=_('Size'), id='field-size', placeholder=_('Size in bytes'), value=data.size, error=errors.size, classes=['control-medium']) }}
+{% endblock %}
